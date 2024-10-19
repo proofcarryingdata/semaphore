@@ -1,3 +1,18 @@
+# Semaphore v3.15.2 Fork
+
+This is a very tiny fork of `@semaphore-protocol/proof` version v3.15.2 to patch the inclusion of `poseidon-lite`, so that:
+a) the package is listed as a dependency rather than devDependency, allowing bundlers to handle it correctly
+b) only the necessary `poseidon2` constants are imported, rather than the full set of constants (many of which are very large)
+
+The net effect is to reduce the output bundle for `@semaphore-protocol/proof` from >600KiB to ~45KiB, with no change in functionality.
+
+This branch also includes the re-addition of Yarn 3.2.1, which is required in order to build the 3.15.2 branch, but which was deleted from the git history in the original Semaphore repo.
+
+To build, run `yarn build:libraries`.
+To publish the patched package, run `./publish-patched-proof-package.sh`.
+
+---
+
 <p align="center">
     <h1 align="center">
       <picture>
